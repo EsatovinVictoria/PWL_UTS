@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Kategoris\Schemas;
 
 use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class KategoriInfolist
@@ -11,8 +12,21 @@ class KategoriInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('kategori_kode'),
-                TextEntry::make('kategori_nama'),
+                Section::make('Informasi Kategori')
+                    ->icon('heroicon-o-information-circle')
+                    ->description('Detail lengkap data kategori.')
+                    ->schema([
+                        TextEntry::make('kategori_kode')
+                            ->label('Kode Kategori')
+                            ->icon('heroicon-o-hashtag')
+                            ->badge()
+                            ->color('primary'),
+                        TextEntry::make('kategori_nama')
+                            ->label('Nama Kategori')
+                            ->icon('heroicon-o-tag')
+                            ->badge()
+                            ->color('success'),
+                    ])->columnSpanFull(),
             ]);
     }
 }

@@ -28,6 +28,8 @@ class KategoriResource extends Resource
 
     protected static ?string $pluralLabel = 'Kategori';
 
+    protected static ?string $slug = 'kategori';
+
     public static function form(Schema $schema): Schema
     {
         return KategoriForm::configure($schema);
@@ -58,5 +60,12 @@ class KategoriResource extends Resource
             'view' => ViewKategori::route('/{record}'),
             'edit' => EditKategori::route('/{record}/edit'),
         ];
+    }
+
+    // app/Filament/Resources/KategoriResource.php
+
+    public static function getPluralLabel(): string
+    {
+        return 'Kategori';
     }
 }
