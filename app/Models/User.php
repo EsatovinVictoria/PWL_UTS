@@ -17,9 +17,15 @@ class User extends Authenticatable
     protected $fillable = [
         'level_id',
         'username',
+        'email',
         'nama',
         'password'
     ];
+
+    public function getNameAttribute()
+    {
+        return $this->nama;
+    }
 
     protected $hidden = [
         'password',
@@ -28,6 +34,7 @@ class User extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
 
     // RELASI
     public function level()

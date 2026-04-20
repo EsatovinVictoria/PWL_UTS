@@ -18,6 +18,7 @@ return new class extends Migration
                 ->constrained('m_level', 'level_id')
                 ->cascadeOnDelete();
 
+            $table->string('email', 100)->unique();
             $table->string('username', 50)->unique();
             $table->string('nama', 100);
             $table->string('password');
