@@ -1,15 +1,20 @@
 <?php
 
-namespace App\Filament\Resources\Barangs\Pages;
+namespace App\Filament\Resources\Penjualans\Pages;
 
-use App\Filament\Resources\Barangs\BarangResource;
+use App\Filament\Resources\Penjualans\PenjualanResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
 
-class EditBarang extends EditRecord
+class EditPenjualan extends EditRecord
 {
-    protected static string $resource = BarangResource::class;
+    protected static string $resource = PenjualanResource::class;
+
+    public function getTitle(): string
+    {
+        return 'Edit Penjualan ' . $this->record->penjualan_id;
+    }
 
     public function getRedirectUrl(): string
     {

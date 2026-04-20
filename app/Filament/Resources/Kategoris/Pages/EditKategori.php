@@ -11,6 +11,11 @@ class EditKategori extends EditRecord
 {
     protected static string $resource = KategoriResource::class;
 
+    public function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('view', ['record' => $this->record]);
+    }
+
     protected function getHeaderActions(): array
     {
         return [
