@@ -3,9 +3,11 @@
 namespace App\Filament\Resources\Penjualans\Schemas;
 
 use Filament\Infolists\Components\TextEntry;
-use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Group;
+use Filament\Infolists\Components\RepeatableEntry;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Schema;
 
 class PenjualanInfolist
 {
@@ -29,8 +31,6 @@ class PenjualanInfolist
                                 ->icon('heroicon-o-user-group')
                                 ->badge()
                                 ->color('warning'),
-
-                            
                         ]),
 
                         Group::make([
@@ -38,17 +38,56 @@ class PenjualanInfolist
                                 ->label('Kode Penjualan')
                                 ->icon('heroicon-o-hashtag')
                                 ->badge()
-                                ->color('warning'),
+                                ->color('success'),
 
                             TextEntry::make('penjualan_tanggal')
                                 ->label('Tanggal')
                                 ->icon('heroicon-o-calendar')
+                                ->date('d F Y')
                                 ->badge()
                                 ->color('gray'),
                         ]),
                     ])
-                    ->columnSpanFull()
-                    ->columns(2),
+                    ->columns(2)
+                    ->columnSpanFull(),
+
+                Section::make('Detail Barang')
+                    ->icon('heroicon-o-shopping-bag')
+                    ->description('Daftar barang yang dibeli.')
+                    ->schema([
+                        RepeatableEntry::make('detail')
+                            ->label('Details')
+                            ->schema([
+                                Grid::make(4)
+                                    ->schema([
+                                        TextEntry::make('barang.barang_nama')
+                                            ->label('Nama Barang')
+                                            ->icon('heroicon-o-cube')
+                                            ->badge()
+                                            ->color('success'),
+
+                                        TextEntry::make('jumlah')
+                                            ->label('Jumlah')
+                                            ->badge()
+                                            ->color('primary'),
+
+                                        TextEntry::make('harga')
+                                            ->label('Harga Satuan')
+                                            ->money('IDR')
+                                            ->badge()
+                                            ->color('warning'),
+
+                                        TextEntry::make('subtotal')
+                                            ->label('Subtotal')
+                                            ->money('IDR')
+                                            ->badge()
+                                            ->color('danger')
+                                            ->state(fn ($record) => $record->harga * $record->jumlah),
+                                    ]),
+                            ])
+                            ->columnSpanFull(),
+                    ])
+                    ->columnspanFull(),
             ]);
     }
 }
