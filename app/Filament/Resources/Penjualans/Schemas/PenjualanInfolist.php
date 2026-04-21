@@ -41,9 +41,9 @@ class PenjualanInfolist
                                 ->color('success'),
 
                             TextEntry::make('penjualan_tanggal')
-                                ->label('Tanggal')
+                                ->label('Tanggal & Waktu Penjualan')
                                 ->icon('heroicon-o-calendar')
-                                ->date('d F Y')
+                                ->date('d F Y H:i:s')
                                 ->badge()
                                 ->color('gray'),
                         ]),

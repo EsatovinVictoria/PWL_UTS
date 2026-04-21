@@ -17,6 +17,25 @@ class Penjualan extends Model
         'penjualan_tanggal'
     ];
 
+    protected $casts = [
+        'penjualan_tanggal' => 'datetime',
+    ];
+
+    protected static function booted()
+    {
+        static::deleting(function ($penjualan) {
+
+            foreach ($penjualan->detail as $detail) {
+                $stok = \App\Models\Stok::where('barang_id', $detail->barang_id)->first();
+
+                if ($stok) {
+                    $stok->stok_jumlah += $detail->jumlah;
+                    $stok->save();
+                }
+            }
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

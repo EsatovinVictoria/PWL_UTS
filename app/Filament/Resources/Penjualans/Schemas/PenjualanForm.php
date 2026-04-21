@@ -8,6 +8,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Repeater;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Forms\Components\DateTimePicker;
 
 class PenjualanForm
 {
@@ -44,16 +45,17 @@ class PenjualanForm
                                 'unique' => 'Kode penjualan sudah digunakan. Harap gunakan kode lain.',
                             ]),
 
-                        DatePicker::make('penjualan_tanggal')
+                        DateTimePicker::make('penjualan_tanggal')
                             ->label('Tanggal Penjualan')
                             ->required()
                             ->default(now())
-                            ->displayFormat('d/m/Y'),
+                            ->timezone('Asia/Jakarta')
+                            ->displayFormat('d/m/Y H:i:s')
+                            ->seconds(false),
                     ])
                     ->columns(2)
                     ->columnSpanFull(),
 
-                // ✅ TAMBAHKAN REPEATER UNTUK DETAIL BARANG
                 Section::make('Detail Barang')
                     ->icon('heroicon-o-shopping-bag')
                     ->description('Masukkan barang yang dibeli oleh pembeli.')
@@ -103,7 +105,7 @@ class PenjualanForm
                                     ->required()
                                     ->prefix('Rp')
                                     ->reactive()
-                                    ->disabled()
+                                    ->readonly()
                                     ->afterStateUpdated(function ($state, callable $set, callable $get) {
                                         $jumlah = $get('jumlah');
                                         if ($jumlah && $state) {
