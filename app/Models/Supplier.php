@@ -8,7 +8,6 @@ class Supplier extends Model
 {
     protected $table = 'm_supplier';
     protected $primaryKey = 'supplier_id';
-    public $timestamps = false;
 
     protected $fillable = [
         'supplier_kode',

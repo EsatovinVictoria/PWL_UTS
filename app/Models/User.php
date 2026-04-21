@@ -12,7 +12,6 @@ class User extends Authenticatable
 
     protected $table = 'm_user';
     protected $primaryKey = 'user_id';
-    public $timestamps = false;
 
     protected $fillable = [
         'level_id',

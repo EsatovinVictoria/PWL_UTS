@@ -8,7 +8,6 @@ class Stok extends Model
 {
     protected $table = 't_stok';
     protected $primaryKey = 'stok_id';
-    public $timestamps = false;
 
     protected $fillable = [
         'supplier_id',

@@ -16,32 +16,30 @@ class SupplierInfolist
             ->components([
                 Section::make('Informasi Supplier')
                     ->icon('heroicon-o-information-circle')
+                    ->description('Detail lengkap data supplier.')
                     ->schema([
-                        Section::make('Data Supplier')
+                        Grid::make(2)
                             ->schema([
-                                Grid::make(2)
+                                Group::make()
                                     ->schema([
-                                        Group::make()
-                                            ->schema([
-                                                TextEntry::make('supplier_kode')
-                                                    ->label('Kode Supplier')
-                                                    ->icon('heroicon-o-hashtag')
-                                                    ->badge()
-                                                    ->color('primary'),
-
-                                                TextEntry::make('supplier_nama')
-                                                    ->label('Nama Supplier')
-                                                    ->icon('heroicon-o-building-storefront')
-                                                    ->badge()
-                                                    ->color('success'),
-                                            ]),
-
-                                        TextEntry::make('supplier_alamat')
-                                            ->label('Alamat Supplier')
-                                            ->icon('heroicon-o-map-pin')
+                                        TextEntry::make('supplier_kode')
+                                            ->label('Kode Supplier')
+                                            ->icon('heroicon-o-hashtag')
                                             ->badge()
-                                            ->color('gray')
+                                            ->color('primary'),
+
+                                        TextEntry::make('supplier_nama')
+                                            ->label('Nama Supplier')
+                                            ->icon('heroicon-o-building-storefront')
+                                            ->badge()
+                                            ->color('success'),
                                     ]),
+
+                                TextEntry::make('supplier_alamat')
+                                    ->label('Alamat Supplier')
+                                    ->icon('heroicon-o-map-pin')
+                                    ->badge()
+                                    ->color('gray')
                             ]),
                     ]),
             ])->columns(1);

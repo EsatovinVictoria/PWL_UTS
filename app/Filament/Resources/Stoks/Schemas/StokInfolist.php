@@ -20,6 +20,7 @@ class StokInfolist
                             ->icon('heroicon-o-information-circle')
                             ->schema([
                                 Section::make('Data Stok')
+                                    ->description('Detail lengkap data stok barang.')
                                     ->schema([
                                         Grid::make(2)
                                             ->schema([
@@ -62,6 +63,7 @@ class StokInfolist
                             ->icon('heroicon-o-shopping-bag')
                             ->schema([
                                 Section::make('Detail Barang')
+                                    ->description('Detail lengkap tentang barang terkait stok ini.')
                                     ->schema([
                                         Grid::make(2)
                                             ->schema([

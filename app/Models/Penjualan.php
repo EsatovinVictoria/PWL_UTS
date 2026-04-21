@@ -8,7 +8,6 @@ class Penjualan extends Model
 {
     protected $table = 't_penjualan';
     protected $primaryKey = 'penjualan_id';
-    public $timestamps = false;
 
     protected $fillable = [
         'user_id',
@@ -24,15 +23,7 @@ class Penjualan extends Model
     protected static function booted()
     {
         static::deleting(function ($penjualan) {
-
-            foreach ($penjualan->detail as $detail) {
-                $stok = \App\Models\Stok::where('barang_id', $detail->barang_id)->first();
-
-                if ($stok) {
-                    $stok->stok_jumlah += $detail->jumlah;
-                    $stok->save();
-                }
-            }
+            $penjualan->detail()->delete();
         });
     }
 
