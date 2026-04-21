@@ -23,7 +23,14 @@ class Penjualan extends Model
     protected static function booted()
     {
         static::deleting(function ($penjualan) {
-            $penjualan->detail()->delete();
+            $penjualan->detail()->each(function ($detail) {
+                $stok = \App\Models\Stok::where('barang_id', $detail->barang_id)->first();
+
+                if ($stok) {
+                    $stok->stok_jumlah += $detail->jumlah;
+                    $stok->save();
+                }
+            });
         });
     }
 
