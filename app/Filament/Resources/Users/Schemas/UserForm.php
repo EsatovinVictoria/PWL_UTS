@@ -49,6 +49,20 @@ class UserForm
                                             'unique' => 'Username sudah digunakan. Harap gunakan username lain.',
                                         ])
                                         ->unique(ignoreRecord: true),
+
+                                    TextInput::make('email')
+                                        ->label('Email')
+                                        ->prefixIcon('heroicon-o-envelope')
+                                        ->email()
+                                        ->required()
+                                        ->maxLength(255)
+                                        ->placeholder('Masukkan email')
+                                        ->helperText('Email harus unik.')
+                                        ->unique(ignoreRecord: true)
+                                        ->validationMessages([
+                                            'unique' => 'Email sudah digunakan. Harap gunakan email lain.',
+                                        ]),
+
                                 ])
                                 ->columns(2),
                         ]),

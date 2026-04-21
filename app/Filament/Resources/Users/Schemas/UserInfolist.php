@@ -27,7 +27,15 @@ class UserInfolist
                             ->icon('heroicon-o-at-symbol')
                             ->badge()
                             ->color('success'),
-                    ])->columnSpanFull(),
+
+                        TextEntry::make('email')
+                            ->label('Email')
+                            ->icon('heroicon-o-envelope')
+                            ->badge()
+                            ->color('info'),
+                    ])
+                    ->columns(2)
+                    ->columnSpanFull(),
             ]);
     }
 }
