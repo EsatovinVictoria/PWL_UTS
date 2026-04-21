@@ -18,6 +18,10 @@ class Stok extends Model
         'stok_jumlah'
     ];
 
+    protected $casts = [
+        'stok_tanggal' => 'datetime',
+    ];
+
     public function supplier()
     {
         return $this->belongsTo(Supplier::class, 'supplier_id');
