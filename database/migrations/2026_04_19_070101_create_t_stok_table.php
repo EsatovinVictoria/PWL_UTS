@@ -25,6 +25,8 @@ return new class extends Migration
 
             $table->dateTime('stok_tanggal');
             $table->integer('stok_jumlah');
+
+            $table->timestamps();
         });
     }
 

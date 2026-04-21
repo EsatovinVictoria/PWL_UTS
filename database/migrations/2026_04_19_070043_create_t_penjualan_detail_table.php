@@ -23,6 +23,8 @@ return new class extends Migration
 
             $table->integer('harga');
             $table->integer('jumlah');
+
+            $table->timestamps();
         });
     }
 
